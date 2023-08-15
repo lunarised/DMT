@@ -1,0 +1,15 @@
+
+{
+		"race": "human",
+		"name": "brian",
+		"class": "ranger",
+		"player": "rory",
+		"abilityScores": {
+			"strength": 20,
+			"dexterity": 20,
+			"intelligence": 20,
+			"wisdom": 20,
+			"charisma": 20,
+			"constitution": 20
+		}
+}
