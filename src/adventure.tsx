@@ -1,29 +1,31 @@
+import { observable } from "mobx";
 import { Character } from "./characters/characters";
 import { ColoredRectangle } from "./components/characterCard";
 
 type AdventureState = {
-	players: Character[];
-	activeNPCs: Character[];
+  players: Character[];
+  activeNPCs: Character[];
 };
 
-let adventureState: AdventureState = { players: [], activeNPCs: [] };
+let adventureState: AdventureState = observable({
+  players: [],
+  activeNPCs: [],
+});
 
 export const loadPlayer = (player: Character) => {
-	adventureState.players.push(player);
+  adventureState.players.push(player);
 };
 
 const loadActiveNPC = (npc: Character) => {
-	adventureState.activeNPCs.push(npc);
+  adventureState.activeNPCs.push(npc);
 };
 
-const playerPlates = [];
+export const AdventureView = () => {
+  const renderPlates = () => {
+    return adventureState.players.map((player) => {
+      return <p> Howdy </p>;
+    });
+  };
 
-export const AdventureView = (props: AdventureState) => {
-	const renderPlates = () => {
-		return props.players.map((player) => {
-			return <ColoredRectangle {...player} />;
-		});
-	};
-
-	return <div>{renderPlates()}</div>;
+  return <div>{renderPlates()}</div>;
 };

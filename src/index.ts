@@ -19,10 +19,11 @@ const createWindow = (): void => {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     },
   });
- // mainWindow.fullScreen = true;
-  
+  // mainWindow.fullScreen = true;
+
   // and load the index.html of the app.
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+  mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
@@ -46,7 +47,7 @@ app.on("activate", () => {
     createWindow();
   }
 });
-import {menu} from "./electronMenu";
+import { menu } from "./electronMenu";
 Menu.setApplicationMenu(menu);
 
 // In this file you can include the rest of your app's specific main process
