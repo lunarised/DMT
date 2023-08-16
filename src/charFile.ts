@@ -3,6 +3,7 @@ const {dialog} = require('electron')
 import * as path from 'path';
 import fs from 'fs';
 import { loadPlayer } from "./adventure"
+import { ipcMain } from "electron";
     
 export const loadFile = async()=>{  
     console.log("A");   
@@ -15,6 +16,8 @@ export const loadFile = async()=>{
     console.log("SNIGHG");
     console.log(fopen);
     let dataArray = JSON.parse(fopen);
+
+    
     loadPlayer(dataArray);
 
 }

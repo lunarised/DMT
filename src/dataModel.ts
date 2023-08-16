@@ -4,8 +4,10 @@ import { Character } from "./characters/characters";
 export class DataModel {
   static instance: DataModel;
 
+  //@observable
+  //characters: Character[];
   @observable
-  characters: Character[];
+  numbers: number[];
 
   static sharedInstance(): DataModel {
     if (!DataModel.instance) {
@@ -16,6 +18,7 @@ export class DataModel {
 
   constructor() {
     makeObservable(this);
-    this.characters = [];
+   // this.characters = [];
+    this.numbers = [1];
   }
 }

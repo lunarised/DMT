@@ -33,3 +33,5 @@ console.log(
 );
 
 import "./app";
+import { DataModel } from "./dataModel";
+
