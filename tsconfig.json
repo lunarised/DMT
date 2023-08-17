@@ -14,7 +14,9 @@
     "resolveJsonModule": true,
     "paths": {
       "*": ["node_modules/*"]
-    }
+    },
+    "experimentalDecorators": true,
+    "useDefineForClassFields": true
   },
   "include": ["src/**/*"],
   "watchOptions": {

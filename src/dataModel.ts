@@ -6,8 +6,10 @@ export class DataModel {
 
   //@observable
   //characters: Character[];
-  @observable
+
   numbers: number[];
+
+  recent: number;
 
   static sharedInstance(): DataModel {
     if (!DataModel.instance) {
@@ -17,8 +19,12 @@ export class DataModel {
   }
 
   constructor() {
-    makeObservable(this);
-   // this.characters = [];
+    makeObservable(this, {
+      numbers: observable,
+      recent: observable,
+    });
+    // this.characters = [];
     this.numbers = [1];
+    this.recent = 33;
   }
 }

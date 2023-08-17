@@ -5,44 +5,57 @@ import { DataModel } from "./dataModel";
 import { observer } from "mobx-react";
 
 type AdventureState = {
-	players: Character[];
-	activeNPCs: Character[];
+  players: Character[];
+  activeNPCs: Character[];
 };
 
 let adventureState: AdventureState = observable({
-	players: [],
-	activeNPCs: [],
+  players: [],
+  activeNPCs: [],
 });
 
-(window as any).electronAPI.loadState((event, value: { me: number }) => {
-	console.log(DataModel.sharedInstance().numbers.toString());
-
-	DataModel.sharedInstance().numbers.push(value.me);
-	console.log(DataModel.sharedInstance().numbers.toString());
+(window as any).electronAPI.loadState((event, value: { player: string }) => {
+  loadPlayer(value.player);
 });
 
 export const loadPlayer = (player: Character) => {
-	DataModel.sharedInstance().characters.push(player);
+  DataModel.sharedInstance().characters.push(player);
 };
 
 const loadActiveNPC = (npc: Character) => {
-	adventureState.activeNPCs.push(npc);
+  adventureState.activeNPCs.push(npc);
 };
 export const Buttyon = () => {
-	return (
-		<button onClick={() => DataModel.sharedInstance().numbers.push(420)}>
-			Hi
-		</button>
-	);
+  return (
+    <button onClick={() => DataModel.sharedInstance().numbers.push(420)}>
+      Hi
+    </button>
+  );
+};
+
+export const Buttyoni = () => {
+  return (
+    <button
+      onClick={() => {
+        DataModel.sharedInstance().recent =
+          DataModel.sharedInstance().numbers.at(-1);
+
+        console.log(DataModel.sharedInstance().recent);
+      }}
+    >
+      Hippo
+    </button>
+  );
 };
 
 export const AdventureView = observer(() => {
-	let p = DataModel.sharedInstance().numbers;
-	console.log("RONDER");
-	return (
-		<div>
-			<Buttyon />
-			{p.toString()}
-		</div>
-	);
+  let p = DataModel.sharedInstance().numbers;
+  console.log("RONDER");
+  return (
+    <div>
+      <Buttyon />
+      <Buttyoni />
+      {p.toString()}
+    </div>
+  );
 });
