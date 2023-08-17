@@ -16,7 +16,8 @@
       "*": ["node_modules/*"]
     },
     "experimentalDecorators": true,
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+    "strict": true
   },
   "include": ["src/**/*"],
   "watchOptions": {

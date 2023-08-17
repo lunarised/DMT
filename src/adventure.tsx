@@ -14,8 +14,8 @@ let adventureState: AdventureState = observable({
   activeNPCs: [],
 });
 
-(window as any).electronAPI.loadState((event, value: { player: string }) => {
-  loadPlayer(value.player);
+(window as any).electronAPI.loadState((event, value: { me: number }) => {
+  DataModel.sharedInstance().numbers.push(value.me);
 });
 
 export const loadPlayer = (player: Character) => {
