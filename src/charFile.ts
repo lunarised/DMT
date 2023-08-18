@@ -18,6 +18,6 @@ export const loadFile = async()=>{
     let dataArray = JSON.parse(fopen);
 
     
-    loadPlayer(dataArray);
+    //loadPlayer(dataArray);
 
 }
